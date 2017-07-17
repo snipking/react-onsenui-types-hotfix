@@ -1,0 +1,5 @@
+node_modules
+www
+.idea
+/nbproject/private/
+.DS_Store
