@@ -3,16 +3,6 @@
         "name": "Derek.Chia",
         "email": "snipking@gmail.com"
     },
-    "contributors": [
-        {
-            "name": "Ozytis",
-            "url": "https://ozytis.fr"
-        },
-        {
-            "name": "Derek.Chia",
-            "email": "snipking@gmail.com"
-        }
-    ],
     "dependencies": {
         "@types/react": "*"
     },
