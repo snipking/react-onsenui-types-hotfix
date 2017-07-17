@@ -3,7 +3,8 @@
         "name": "Derek.Chia",
         "email": "snipking@gmail.com"
     },
-    "contributors": [{
+    "contributors": [
+        {
             "name": "Ozytis",
             "url": "https://ozytis.fr"
         },
@@ -21,10 +22,12 @@
     "directories": {},
     "license": "MIT",
     "main": "",
-    "maintainers": [{
-        "name": "DerekChia",
-        "email": "snipking@gmail.com"
-    }],
+    "maintainers": [
+        {
+            "name": "DerekChia",
+            "email": "snipking@gmail.com"
+        }
+    ],
     "name": "@zhishinet/react-onsenui-types-hotfix",
     "optionalDependencies": {},
     "peerDependencies": {},
@@ -34,5 +37,5 @@
     },
     "scripts": {},
     "typeScriptVersion": "2.3",
-    "version": "0.0.1"
+    "version": "0.0.2"
 }
