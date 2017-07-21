@@ -1,6 +1,7 @@
-// Type definitions for React OnSenui (react-onsenui) 2.1
-// Project: https://onsen.io/v2/docs/guide/react/
+// Type definitions for React OnSenui (react-onsenui) 1.4.0
+// Project: https://onsen.io/v2/api/react/
 // Definitions by: Ozytis <https://ozytis.fr>
+// Extends by: Derek.Chia <snipking@gmail.com>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
@@ -100,7 +101,7 @@ export class BackButton extends Component<{
 } & HTMLProps<any>, any> {}
 
 export class Navigator extends Component<{
-    renderPage(): any,
+    renderPage(route?: any, navigator?: Navigator): any,
     initialRouteStack?: string[],
     initialRoute?: any,
     onPrePush?(): void,
@@ -195,6 +196,18 @@ export class Popover extends Component<{
     onPostHide?(): void,
 } & HTMLProps<any>, any> {}
 
+export class Toast extends Component<{
+    isOpen: boolean,
+    animation?: string,
+    modifier?: string,
+    animationOptions?: AnimationOptions,
+    onPreShow?(): void,
+    onPostShow?(): void,
+    onPreHids?(): void,
+    onPostHide?(): void,
+    onDeviceBackButton?(): void
+} & HTMLProps<any>, any> {}
+
 export class ProgressBar extends Component<{
     modifier?: string,
     value?: number,
@@ -257,6 +270,35 @@ export class Switch extends Component<{
     inputId?: string
 } & HTMLProps<any>, any> {}
 
+export class Radio extends Component<{
+    modifier?: string,
+    disabled?: string,
+    onChange?(event: Event): void,
+    value?: string,
+    checked?: boolean,
+    inputId?: string
+} & HTMLProps<any>, any> {}
+
+export class SearchInput extends Component<{
+    modifier?: string,
+    disabled?: boolean,
+    onChange?(event: Event): void,
+    value?: string,
+    inputId?: string
+} & HTMLProps<any>, any> {}
+
+export class Select extends Component<{
+    modifier?: string,
+    disabled?: boolean,
+    onChange?(event: Event): void,
+    value?: string,
+    multiple?: boolean,
+    autofocus?: boolean,
+    required?: boolean,
+    form?: string,
+    size?: string
+} & HTMLProps<any>, any> {}
+
 /**
  * Tabs
  */
@@ -307,3 +349,54 @@ export class ListItem extends Component<{
     tapBackgroundColor?: string,
     lockOnDrag?: boolean,
 } & HTMLProps<any>, any> {}
+
+/**
+ * ActionSheet
+ */
+
+ export class ActionSheet extends Component<{
+     onCancel?(): void,
+     isOpen: boolean,
+     isCancelable?: boolean,
+     isDisabled?: boolean,
+     animation?: string,
+     modifier?: string,
+     maskColor?: string,
+     animationOptions?: AnimationOptions,
+     onPreShow?(): void,
+     onPostShow?(): void,
+     onPreHide?(): void,
+     onPostHide?(): void,
+     onDeviceBackButton?(): void
+ } & HTMLProps<any>, any> {}
+
+ export class ActionSheetButton extends Component<{
+     modifier?: string,
+     icon?: string
+ } & HTMLProps<any>, any> {}
+
+ /**
+  * Control
+  */
+
+  export class PullHook extends Component<{
+      onChange?(event: Event): void,
+      onLoad?(done: any): void,
+      disabled?: boolean,
+      height?: number,
+      thresholdHeight?: number,
+      fixedContent?: boolean
+
+  } & HTMLProps<any>, any> {}
+
+  export class SpeedDial extends Component<{
+      modifier?: string,
+      position?: string,
+      direction?: string,
+      disabled?: string
+  } & HTMLProps<any>, any> {}
+
+  export class SpeedDialItem extends Component<{
+      modifier?: string,
+      onClick?(...args: any[]): void
+  } & HTMLProps<any>, any> {}

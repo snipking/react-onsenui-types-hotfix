@@ -1,0 +1,4 @@
+.npmignore
+tsconfig.json
+react-onsenui-tests.tsx
+tslint.json

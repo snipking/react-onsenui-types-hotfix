@@ -1,16 +1,28 @@
 {
+    "name": "@zhishinet-types/react-onsenui",
+    "description": "TypeScript definitions for React OnSenui (react-onsenui), based on @types/react-onsenui@2.1.2",
+    "version": "0.0.1",
     "author": {
         "name": "Derek.Chia",
         "email": "snipking@gmail.com"
     },
+    "contributors": [
+        {
+            "name": "Ozytis",
+            "url": "https://ozytis.fr"
+        },
+        {
+            "name": "Derek.Chia",
+            "email": "snipking@gmail.com"
+        }
+    ],
+    "license": "MIT",
     "dependencies": {
         "@types/react": "*"
     },
     "homepage": "https://www.github.com/snipking/react-onsenui-types-hotfix",
-    "description": "TypeScript definitions for React OnSenui (react-onsenui), base on @types/react-onsenui@2.1.2",
     "devDependencies": {},
     "directories": {},
-    "license": "MIT",
     "main": "",
     "maintainers": [
         {
@@ -18,7 +30,6 @@
             "email": "snipking@gmail.com"
         }
     ],
-    "name": "@zhishinet/react-onsenui-types-hotfix",
     "optionalDependencies": {},
     "peerDependencies": {},
     "repository": {
@@ -26,6 +37,5 @@
         "url": "https://www.github.com/snipking/react-onsenui-types-hotfix"
     },
     "scripts": {},
-    "typeScriptVersion": "2.3",
-    "version": "0.0.2"
+    "typeScriptVersion": "2.3"
 }
