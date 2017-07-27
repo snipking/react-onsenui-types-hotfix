@@ -309,14 +309,18 @@ export class TabActive extends Component<{} & HTMLProps<any>> { }
 
 export class TabInactive extends Component<{} & HTMLProps<any>> { }
 
+export interface TabbarEvent extends Event {
+    index: number
+}
+
 export class Tabbar extends Component<{
     index?: number,
     renderTabs?(): any,
     position?: "bottom" | "top" | "auto",
-    animation: "none" | "slide" | "fade",
+    animation?: "none" | "slide" | "fade",
     animationOptions?: AnimationOptions,
-    onPreChange?(): void,
-    onPostChange?(): void,
+    onPreChange?(event: TabbarEvent): void,
+    onPostChange?(event: TabbarEvent): void,
     onReactive?(): void,
 } & HTMLProps<any>, any> { }
 
