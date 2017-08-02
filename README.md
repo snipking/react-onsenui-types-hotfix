@@ -18,6 +18,7 @@ Add:
  - `PullHook` component
  - `SpeedDial` Component
  - `SpeedDialItem` Component
+ - `Checkbox` Component
 
 # How to use
 

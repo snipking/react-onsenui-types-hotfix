@@ -244,6 +244,15 @@ export class Button extends Component<{
     onClick?(e?: Event): void
 } & HTMLProps<any>, any> {}
 
+export class Checkbox extends Component<{
+    modifier?: string,
+    disabled?: boolean,
+    onChange?(e?: Event): void,
+    value?: string,
+    checked?: boolean,
+    inputId?: string
+} & HTMLProps<any>, any> {}
+
 export class Input extends Component<{
     modifier?: string,
     disabled?: boolean,
