@@ -19,6 +19,7 @@ Add:
  - `SpeedDial` Component
  - `SpeedDialItem` Component
  - `Checkbox` Component
+ - `Modal` add `onDeviceBackButton` function
 
 # How to use
 

@@ -177,7 +177,8 @@ export class Modal extends Component<{
     animationOptions?: AnimationOptions
     onShow?(): void,
     onHide?(): void,
-    isOpen?: boolean
+    isOpen?: boolean,
+    onDeviceBackButton?(e?: Event): void
 } & HTMLProps<any>, any> {}
 
 export class Popover extends Component<{
