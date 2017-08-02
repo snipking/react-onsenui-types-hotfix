@@ -220,7 +220,7 @@ export class ProgressCircular extends Component<{
     modifier?: string,
     value?: number,
     secondaryValue?: boolean,
-    intermediate?: boolean,
+    indeterminate?: boolean,
 } & HTMLProps<any>, any> {}
 
 export class Ripple extends Component<{
