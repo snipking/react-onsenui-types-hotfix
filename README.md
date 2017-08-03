@@ -4,6 +4,8 @@
 # Summary
 This package contains type definitions for React OnSenui (react-onsenui) (https://onsen.io/v2/docs/guide/react/).
 
+Match react-onsenui@1.5.0
+
 # Details
 Files were exported from https://www.github.com/snipking/react-onsenui-types-hotfix
 
@@ -19,7 +21,9 @@ Add:
  - `SpeedDial` Component
  - `SpeedDialItem` Component
  - `Checkbox` Component
- - `Modal` add `onDeviceBackButton` function
+ - `Modal` `Page` `Popover`... add `onDeviceBackButton` function
+ - Fix component event handle function parameter loss
+ - Fix some type error
 
 # How to use
 

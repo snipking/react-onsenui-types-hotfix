@@ -1,12 +1,12 @@
 {
     "name": "@zhishinet-types/react-onsenui",
     "description": "TypeScript definitions for React OnSenui (react-onsenui), based on @types/react-onsenui@2.1.2",
-    "version": "0.0.9",
+    "version": "0.1.0",
     "author": {
         "name": "Derek.Chia",
         "email": "snipking@gmail.com"
     },
-    "keywords": ["react", "onsenui", "onsenui2", "typedefine"],
+    "keywords": ["react", "onsenui", "onsenui2", "typescript"],
     "contributors": [
         {
             "name": "Ozytis",
