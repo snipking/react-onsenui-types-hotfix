@@ -189,7 +189,7 @@ export class Carousel extends Component<{
 } & HTMLProps<any>, any> {}
 
 export class CarouselItem extends Component<{
-    modifier: string
+    modifier?: string
 } & HTMLProps<any>, any> {}
 
 /*** AlertDialog ***/
