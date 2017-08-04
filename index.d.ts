@@ -145,7 +145,8 @@ export class Navigator extends Component<{
     animationOptions?: AnimationOptions,
     swipeable?: boolean,
     swipeTargetWidth?: string,
-    swipeThreshold?: number
+    swipeThreshold?: number,
+    routes?: any[]
 } & HTMLProps<any>, any> {
     resetPage(route: any, options: NavigatorPushPopOptions): void;
     resetPageStack(route: any, options: NavigatorPushPopOptions): void;
