@@ -448,7 +448,7 @@ export class LazyList extends Component<{
 
 export class List extends Component<{
     modifier?: string,
-    dataSource?: string[],
+    dataSource?: any[],
     renderRow?(row?: any, index?: number): void,
     renderHeader?(): JSX.Element | HTMLElement,
     renderFooter?(): JSX.Element | HTMLElement,
