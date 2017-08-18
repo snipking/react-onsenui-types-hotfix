@@ -145,13 +145,13 @@ export class Navigator extends Component<{
     animationOptions?: AnimationOptions,
     swipeable?: boolean,
     swipeTargetWidth?: string,
-    swipeThreshold?: number,
-    routes?: any[]
+    swipeThreshold?: number
 } & HTMLProps<any>, any> {
     resetPage(route: any, options: NavigatorPushPopOptions): void;
     resetPageStack(route: any, options: NavigatorPushPopOptions): void;
     pushPage(route: any, options: NavigatorPushPopOptions): void;
     popPage(route: any, options: NavigatorPushPopOptions): void;
+    routes: any[];
 }
 
 /*** Carousel ***/
