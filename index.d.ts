@@ -350,6 +350,7 @@ export class Input extends Component<{
     type?: string,
     inputId?: string,
     float?: boolean,
+    readonly?: boolean
 } & HTMLProps<any>, any> {}
 
 export class Range extends Component<{
