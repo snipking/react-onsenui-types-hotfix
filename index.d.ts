@@ -45,7 +45,7 @@ export class SplitterSide extends Component<{
     onPreClose?(event?: SplitterSidePreEvent): void,
     onModeChange?(event?: SplitterSideModeChangeEvent): void,
     onClose?(event?: SplitterSideBaseEvent): void,
-    isSwipeable?: boolean,
+    swipeable?: boolean,
     swipeTargetWidth?: number,
     width?: number,
     animation?: "overlay" | "default" | "push" | "reveal"
