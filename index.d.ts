@@ -5,7 +5,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
-import { Component, HTMLProps } from 'react';
+import { Component, HTMLProps, FormEvent, MouseEvent, ReactInstance, ChangeEvent } from 'react';
 
 export interface Modifiers_string {
     default?: string;
@@ -69,7 +69,7 @@ export class BottomToolbar extends Component<{
 export class ToolbarButton extends Component<{
     modifier?: string,
     disabled?: boolean,
-    onClick?(e?: Event): void
+    onClick?(e?: MouseEvent<HTMLElement>): void
 } & HTMLProps<any>, any> {}
 
 /*** icon ***/
@@ -94,6 +94,7 @@ export class Page extends Component<{
     onInit?(event: Event): void,
     onShow?(event: Event): void,
     onHide?(event: Event): void,
+    onInfiniteScroll?(done: Function): void,
     onDeviceBackButton?(): void
 } & HTMLProps<any>, any> {}
 
@@ -110,7 +111,7 @@ export class Row extends Component<{
 /*** Navigation ***/
 export class BackButton extends Component<{
     modifier?: string,
-    onClick?(event?: Event, ...objs: any[]): void
+    onClick?(navigator: Navigator): void
 } & HTMLProps<any>, any> {}
 
 export interface NavigatorPushPopOptions {
@@ -144,19 +145,22 @@ export class Navigator extends Component<{
     animation?: "slide" | "lift" | "fade" | "none" | string,
     animationOptions?: AnimationOptions,
     swipeable?: boolean,
+    swipePop?(): void,
+    onDeviceBackButton?(): void,
     swipeTargetWidth?: string,
     swipeThreshold?: number
 } & HTMLProps<any>, any> {
     resetPage(route: any, options: NavigatorPushPopOptions): void;
     resetPageStack(route: any, options: NavigatorPushPopOptions): void;
     pushPage(route: any, options: NavigatorPushPopOptions): void;
-    popPage(route: any, options: NavigatorPushPopOptions): void;
+    popPage(options: NavigatorPushPopOptions): void;
     routes: any[];
+    pages: any[];
 }
 
 /*** Carousel ***/
 export interface CarouselBaseEvent extends Event {
-    carousel: any;
+    carousel: Carousel;
 }
 
 export interface CarouselPostChangeEvent extends CarouselBaseEvent {
@@ -196,7 +200,7 @@ export class CarouselItem extends Component<{
 /*** AlertDialog ***/
 
 export interface AlertDialogPreEvent extends Event {
-    alertDialog: any;
+    alertDialog: AlertDialog;
     cancel(): void;
 }
 
@@ -217,11 +221,11 @@ export class AlertDialog extends Component<{
     onPostShow?(event?: AlertDialogPostEvent): void,
     onPreHide?(event?: AlertDialogPreEvent): void,
     onPostHide?(event?: AlertDialogPostEvent): void,
-    onDeviceBackButton?(event?: Event): void
+    onDeviceBackButton?(): void
 } & HTMLProps<any>, any> {}
 
 export interface DialogPreEvent extends Event {
-    dialog: any;
+    dialog: Dialog;
     cancel(): void;
 }
 
@@ -242,18 +246,28 @@ export class Dialog extends Component<{
     onPostShow?(event?: DialogPostEvent): void,
     onPreHide?(event?: DialogPreEvent): void,
     onPostHide?(event?: DialogPostEvent): void,
-    onDeviceBackButton?(event?: Event): void
+    onDeviceBackButton?(): void
 } & HTMLProps<any>, any> {}
+
+export interface ModalPreEvent extends Event {
+    modal: Modal;
+    cancel(): void;
+}
+
+export interface ModalPostEvent extends Event {
+    cancel(): void;
+}
 
 export class Modal extends Component<{
     animation?: "fade" | "none",
     animationOptions?: AnimationOptions
-    onShow?(): void,
-    onHide?(): void,
+    onPreShow?(event?: ModalPreEvent): void,
+    onPostShow?(event?: ModalPostEvent): void,
+    onPreHide?(event?: ModalPreEvent): void,
+    onPostHide?(event?: ModalPostEvent): void,
     isOpen?: boolean,
-    onDeviceBackButton?(event?: Event): void
+    onDeviceBackButton?(): void
 } & HTMLProps<any>, any> {}
-
 
 export interface PopoverBaseEvent extends Event {
     popover: any;
@@ -264,7 +278,7 @@ export interface PopoverPreEvent extends PopoverBaseEvent {
 }
 
 export class Popover extends Component<{
-    getTarget?(): Component<any> | HTMLElement,
+    getTarget?(): Component<any> | HTMLElement | ReactInstance,
     onCancel?(): void,
     isOpen?: boolean,
     isCancelable?: boolean,
@@ -277,7 +291,7 @@ export class Popover extends Component<{
     onPostShow?(event: PopoverBaseEvent): void,
     onPreHide?(event: PopoverPreEvent): void,
     onPostHide?(event: PopoverBaseEvent): void,
-    onDeviceBackButton?(event?: Event): void
+    onDeviceBackButton?(): void
 } & HTMLProps<any>, any> {}
 
 export class Toast extends Component<{
@@ -289,8 +303,42 @@ export class Toast extends Component<{
     onPostShow?(event?: Event): void,
     onPreHids?(event?: Event): void,
     onPostHide?(event?: Event): void,
-    onDeviceBackButton?(event?: Event): void
+    onDeviceBackButton?(): void
 } & HTMLProps<any>, any> {}
+
+/**
+ * ActionSheet
+ */
+ export interface ActionSheetBaseEvent extends Event {
+     cancel(): void;
+ }
+
+ export interface ActionSheetPreEvent extends ActionSheetBaseEvent {
+     actionSheet: ActionSheet;
+     cancel(): void;
+ }
+
+ export class ActionSheet extends Component<{
+     onCancel?(): void,
+     isOpen: boolean,
+     isCancelable?: boolean,
+     isDisabled?: boolean,
+     animation?: string,
+     modifier?: string,
+     maskColor?: string,
+     animationOptions?: AnimationOptions,
+     onPreShow?(event?: ActionSheetPreEvent): void,
+     onPostShow?(event?: ActionSheetBaseEvent): void,
+     onPreHide?(event?: ActionSheetPreEvent): void,
+     onPostHide?(event?: ActionSheetBaseEvent): void,
+     onDeviceBackButton?(): void
+ } & HTMLProps<any>, any> {}
+
+ export class ActionSheetButton extends Component<{
+     modifier?: string,
+     icon?: string,
+     onClick(event?: MouseEvent<HTMLElement>): void
+ } & HTMLProps<any>, any> {}
 
 export class ProgressBar extends Component<{
     modifier?: string,
@@ -322,20 +370,20 @@ export class Fab extends Component<{
     ripple?: boolean,
     position?: string,
     disabled?: boolean,
-    onClick?(e?: Event): void,
+    onClick?(event?: MouseEvent<HTMLElement>): void,
 } & HTMLProps<any>, any> {}
 
 export class Button extends Component<{
     modifier?: string,
     disabled?: boolean,
     ripple?: boolean,
-    onClick?(e?: Event): void
+    onClick?(event?: MouseEvent<HTMLElement>): void
 } & HTMLProps<any>, any> {}
 
 export class Checkbox extends Component<{
     modifier?: string,
     disabled?: boolean,
-    onChange?(e?: Event): void,
+    onChange?(event?: Event): void,
     value?: string,
     checked?: boolean,
     inputId?: string
@@ -344,7 +392,7 @@ export class Checkbox extends Component<{
 export class Input extends Component<{
     modifier?: string,
     disabled?: boolean,
-    onChange?(e: Event): void,
+    onChange?(event: ChangeEvent<any>): void,
     value?: string,
     placeholder?: string,
     type?: string,
@@ -355,19 +403,19 @@ export class Input extends Component<{
 
 export class Range extends Component<{
     modifier?: string,
-    onChange?(e: Event): void,
+    onChange?(event: Event): void,
     value?: number,
     disabled?: boolean,
 } & HTMLProps<any>, any> {}
 
-export interface SwithcChangeEvent extends Event {
-    switch: any;
+export interface SwitchChangeEvent extends FormEvent<any> {
+    switch: Switch;
     value: boolean;
     isInteractive: boolean;
 }
 
 export class Switch extends Component<{
-    onChange?(event: SwithcChangeEvent): void,
+    onChange?(event: SwitchChangeEvent): void,
     checked?: boolean,
     disabled?: boolean,
     inputId?: string
@@ -409,7 +457,8 @@ export class Select extends Component<{
 export class Tab extends Component<{
     label?: string,
     badge?: string,
-    icon?: string
+    icon?: string,
+    activeIcon?: string
 } & HTMLProps<any>> { }
 
 export class TabActive extends Tab { }
@@ -429,11 +478,15 @@ export class Tabbar extends Component<{
     index?: number,
     renderTabs?(): {content: JSX.Element | HTMLElement, tab: JSX.Element | HTMLElement}[ ],
     position?: "bottom" | "top" | "auto",
-    animation?: "none" | "slide" | "fade",
+    swipeable?: boolean,
+    ignoreEdgeWidth?: number,
+    animation?: "none",
     animationOptions?: AnimationOptions,
+    tabBorder?: boolean,
     onPreChange?(event?: TabbarPreEvent): void,
     onPostChange?(event?: TabbarBaseEvent): void,
     onReactive?(event?: TabbarBaseEvent): void,
+    onSwipe?(index: number, animationOptions: AnimationOptions): void
 } & HTMLProps<any>, any> { }
 
 /**
@@ -450,7 +503,7 @@ export class LazyList extends Component<{
 export class List extends Component<{
     modifier?: string,
     dataSource?: any[],
-    renderRow?(row?: any, index?: number): void,
+    renderRow?(row?: any, index?: number): JSX.Element | undefined,
     renderHeader?(): JSX.Element | HTMLElement,
     renderFooter?(): JSX.Element | HTMLElement,
 } & HTMLProps<any>, any> {}
@@ -464,58 +517,40 @@ export class ListItem extends Component<{
     tappable?: boolean,
     tapBackgroundColor?: string,
     lockOnDrag?: boolean,
+    onClick?(event?: React.MouseEventHandler<any>): void,
 } & HTMLProps<any>, any> {}
 
-/**
- * ActionSheet
- */
- export interface ActionSheetBaseEvent extends Event {
-     cancel(): void;
- }
+export class ListTitle extends Component<{
+    modifier?: string,
+    onClick?(event?: React.MouseEventHandler<any>): void
+} & HTMLProps<any>, any> {}
 
- export interface ActionSheetPreEvent extends ActionSheetBaseEvent {
-     actionSheet: any;
-     cancel(): void;
- }
-
- export class ActionSheet extends Component<{
-     onCancel?(): void,
-     isOpen: boolean,
-     isCancelable?: boolean,
-     isDisabled?: boolean,
-     animation?: string,
-     modifier?: string,
-     maskColor?: string,
-     animationOptions?: AnimationOptions,
-     onPreShow?(event?: ActionSheetPreEvent): void,
-     onPostShow?(event?: ActionSheetBaseEvent): void,
-     onPreHide?(event?: ActionSheetPreEvent): void,
-     onPostHide?(event?: ActionSheetBaseEvent): void,
-     onDeviceBackButton?(event?: Event): void
- } & HTMLProps<any>, any> {}
-
- export class ActionSheetButton extends Component<{
-     modifier?: string,
-     icon?: string
- } & HTMLProps<any>, any> {}
 
  /**
   * Control
   */
 
   export interface PullHookChangeEvent extends Event {
-      pullHook: any;
+      pullHook: PullHook;
       state: "initial" | "preaction" | "action";
   }
 
   export class PullHook extends Component<{
       onChange?(event: PullHookChangeEvent): void,
-      onLoad?(done: any): void,
+      onLoad?(done: () => void): void,
+      onPull?(): void,
       disabled?: boolean,
       height?: number,
       thresholdHeight?: number,
       fixedContent?: boolean
 
+  } & HTMLProps<any>, any> {}
+
+  export class Segment extends Component<{
+      index?: number,
+      tabbarId?: string,
+      modifier?: string,
+      onChange?(): void
   } & HTMLProps<any>, any> {}
 
   export class SpeedDial extends Component<{
@@ -527,5 +562,5 @@ export class ListItem extends Component<{
 
   export class SpeedDialItem extends Component<{
       modifier?: string,
-      onClick?(...args: any[]): void
+      onClick?(event?: MouseEvent<HTMLElement>): void
   } & HTMLProps<any>, any> {}
