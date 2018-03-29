@@ -27,6 +27,7 @@ Add:
  - Fix component event handle function parameter loss
  - Fix some type error
  - Fix component onChange event error
+ - Fix navigator methods option parameters
 
 # How to use
 

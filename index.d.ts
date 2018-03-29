@@ -150,10 +150,10 @@ export class Navigator extends Component<{
     swipeTargetWidth?: string,
     swipeThreshold?: number
 } & HTMLProps<any>, any> {
-    resetPage(route: any, options: NavigatorPushPopOptions): void;
-    resetPageStack(route: any, options: NavigatorPushPopOptions): void;
-    pushPage(route: any, options: NavigatorPushPopOptions): void;
-    popPage(options: NavigatorPushPopOptions): void;
+    resetPage(route: any, options?: NavigatorPushPopOptions): void;
+    resetPageStack(route: any, options?: NavigatorPushPopOptions): void;
+    pushPage(route: any, options?: NavigatorPushPopOptions): void;
+    popPage(options?: NavigatorPushPopOptions): void;
     routes: any[];
     pages: any[];
 }
@@ -503,7 +503,7 @@ export class LazyList extends Component<{
 export class List extends Component<{
     modifier?: string,
     dataSource?: any[],
-    renderRow?(row?: any, index?: number): JSX.Element | undefined,
+    renderRow?(row?: any, index?: number): JSX.Element | HTMLElement,
     renderHeader?(): JSX.Element | HTMLElement,
     renderFooter?(): JSX.Element | HTMLElement,
 } & HTMLProps<any>, any> {}
