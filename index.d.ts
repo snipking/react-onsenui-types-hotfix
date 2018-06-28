@@ -151,6 +151,7 @@ export class Navigator extends Component<{
     swipeThreshold?: number
 } & HTMLProps<any>, any> {
     resetPage(route: any, options?: NavigatorPushPopOptions): void;
+    replacePage(route: any, options?: NavigatorPushPopOptions): void;
     resetPageStack(route: any, options?: NavigatorPushPopOptions): void;
     pushPage(route: any, options?: NavigatorPushPopOptions): void;
     popPage(options?: NavigatorPushPopOptions): void;
