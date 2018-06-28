@@ -472,6 +472,8 @@ export interface TabbarBaseEvent extends Event {
 
 export interface TabbarPreEvent extends TabbarBaseEvent {
     cancel(): void;
+    activeIndex: number;
+    lastActiveIndex: number;
 }
 
 export class Tabbar extends Component<{
